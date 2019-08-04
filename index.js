@@ -34,6 +34,7 @@ class NextWorkboxWebpackPlugin {
       removeDir,
       buildId,
       uniqueId,
+      exportDir,
       ...swConfig
     } = {
       ...defaultConfig,
@@ -49,8 +50,8 @@ class NextWorkboxWebpackPlugin {
       removeDir,
       buildId,
       // dedicated path and url, must be under static in next.js to export and refer to it
-      swDestRoot: './static/workbox',
-      swURLRoot: '/static/workbox'
+      swDestRoot: `./${swConfig.exportDir || ''}static/workbox`,
+      swURLRoot: `/${swConfig.exportDir || ''}/static/workbox`
     }
 
     // build id come from next.js is exist
